@@ -22,7 +22,7 @@ class Paraphrase(Resource):
         input_text = request.json['input_text']
         output_count = request.json['output_count']
         batch = tokenizer.prepare_seq2seq_batch([input_text],truncation=True,padding='longest',max_length=60, return_tensors="pt").to(torch_device)
-        translated = model.generate(**batch,max_length=60,num_beams=20, num_return_sequences=output_count, temperature=1.5)
+        translated = model.generate(**batch,max_length=60,num_beams=20, num_return_sequences=output_count, temperature=1.5)   # num_beams is a limit, you can generate only 20 paraphrase with this model, you can increase this as your wish.
         tgt_text = tokenizer.batch_decode(translated, skip_special_tokens=True)
         return {'result':tgt_text}
         

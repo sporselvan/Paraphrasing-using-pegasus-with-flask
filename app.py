@@ -21,9 +21,8 @@ class Paraphrase(Resource):
         print(request.json)
         input_text = request.json['input_text']
         output_count = request.json['output_count']
-        beam_count = request.json['beam_count']
         batch = tokenizer.prepare_seq2seq_batch([input_text],truncation=True,padding='longest',max_length=60, return_tensors="pt").to(torch_device)
-        translated = model.generate(**batch,max_length=60,num_beams=beam_count, num_return_sequences=output_count, temperature=1.5)
+        translated = model.generate(**batch,max_length=60,num_beams=20, num_return_sequences=output_count, temperature=1.5)
         tgt_text = tokenizer.batch_decode(translated, skip_special_tokens=True)
         return {'result':tgt_text}
         

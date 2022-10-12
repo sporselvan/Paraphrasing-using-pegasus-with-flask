@@ -4,7 +4,7 @@ This repository includes information about implementing paraphrasing using pegas
 Framework:
    Flask
 Required libraries:
-   torch, torchvision, transformers, sentence-splitter,SentencePiece
+   flask_restful, flask_cors, torch, torchvision, transformers, sentence-splitter, SentencePiece
 
 This POST method takes two params. 1) input_text 2) output_count
   input_text = used to generate paraphrasing.
@@ -13,8 +13,7 @@ This POST method takes two params. 1) input_text 2) output_count
      
 Sample json payload:
    {
-    "input_text":"you know it's cheating",
-    "output_count":10,
-    "beam_count":20
+    "input_text":"I wanted to follow-up about your interest in Digital-Art",
+    "output_count":10
    }
    
